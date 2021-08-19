@@ -1,0 +1,29 @@
+.tabs__buttons-list
+  display: flex
+  border: 1px solid $border-grey
+  width: max-content
+  margin-bottom: 0
+
+.tabs__buttons-item
+  width: 195px
+  height: 50px
+
+  &:not(:last-of-type)
+    border-right: 1px solid $border-grey
+
+.tabs__button
+  background-color: $main-white
+  color: $fonts-grey
+  font-weight: normal
+  font-size: 20px
+  border: none
+  text-align: center
+  width: 100%
+  height: 100%
+  cursor: pointer
+  box-sizing: border-box
+  padding: 0
+
+  &--current
+    background-color: $main-red
+    color: $main-white

@@ -15,17 +15,15 @@ function Review() {
         </div>
         <div className="review__comment">
           <p className="review__text review__text--bold">Комментарий</p>
-          <p className="review__text review__text--bold">Взяли по трейд-ин, на выгодных условиях у дилера. Стильная внешка и крут по базовым характеристикам. Не думал, что пересяду на китайский автопром, но сейчас гоняю и понимаю, что полностью доволен.</p>
+          <p className="review__text">Взяли по трейд-ин, на выгодных условиях у дилера. Стильная внешка и крут по базовым характеристикам. Не думал, что пересяду на китайский автопром, но сейчас гоняю и понимаю, что полностью доволен.</p>
         </div>
-        <div className="review__rating-box">
-          <div className="review__rating rating">
-            <div className="review__stars rating__stars">
-              <span style={{width: '70%'}}>
-              </span>
-              <span className="visually-hidden">Rating</span>
-            </div>
+        <div className="review__rating rating">
+          <div className="review__stars rating__stars">
+            <span style={{width: '60%'}}>
+            </span>
+            <span className="visually-hidden">Rating</span>
           </div>
-          <p className="review__advice">Советует</p>
+          <p className="rating__advice">Советую</p>
         </div>
         <div className="review__info">
           <p className="review__time">1 минуту назад</p>

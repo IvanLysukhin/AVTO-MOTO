@@ -72,8 +72,10 @@ function Specifications () {
         </li>
       </ul>
       <p className="specifications__price">2 300 000 ₽ <span className="specifications__not-price">2 400 000 ₽</span></p>
-      <button className="specifications__button specifications__button--request">оставить заявку</button>
-      <button className="specifications__button specifications__button--credit">В КРЕДИТ ОТ 11 000 ₽</button>
+      <div className="specifications__buttons-container">
+        <button className="specifications__button specifications__button--request button">оставить заявку</button>
+        <button className="specifications__button specifications__button--credit button button--white">В КРЕДИТ ОТ 11 000 ₽</button>
+      </div>
     </section>
   );
 }

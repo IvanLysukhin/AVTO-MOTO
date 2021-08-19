@@ -9,7 +9,7 @@ function Tabs () {
       <h2 className="visually-hidden">Информация об объявлении</h2>
       <ul className="tabs__buttons-list">
         <li className="tabs__buttons-item">
-          <button className="tabs__button">Характеристики</button>
+          <button className="tabs__button tabs__button--current">Характеристики</button>
         </li>
         <li className="tabs__buttons-item">
           <button className="tabs__button">Отзывы</button>
@@ -19,8 +19,8 @@ function Tabs () {
         </li>
       </ul>
       <div className="tabs__container">
-        <SpecList/>
-        <ReviewsList/>
+        {/*<SpecList/>*/}
+        {/*<ReviewsList/>*/}
         <Contacts/>
       </div>
     </section>

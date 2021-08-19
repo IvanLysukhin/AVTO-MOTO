@@ -2,6 +2,22 @@
   width: 600px
   display: flex
   overflow-x: hidden
+  position: relative
+
+  &:before
+    content: 'new model'
+    position: absolute
+    top: 0
+    left: 0
+    font-size: 10px
+    background-color: $main-red
+    color: $main-white
+    text-align: center
+    letter-spacing: 0.12em
+    text-transform: uppercase
+    padding: 8px 25px
+    box-sizing: border-box
+    width: max-content
 
 .slider__controls
   display: flex
@@ -23,6 +39,11 @@
   border: 1px solid $border-grey
   cursor: pointer
 
+  &:hover
+    transform: scale(1.1)
+
   &--back
     transform: rotate(180deg)
     margin-right: 30px
+    &:hover
+      transform: rotate(180deg) scale(1.1)

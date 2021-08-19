@@ -1,0 +1,70 @@
+.review
+  margin-bottom: 25px
+
+.review__container
+  padding-bottom: 6px
+  border-bottom: 0.5px solid $border-grey
+
+.review__name
+  font-weight: 600
+  font-size: 20px
+  color: $fonts-grey
+  margin: 0
+
+.review__review-block
+  padding-left: 22px
+  position: relative
+
+  &:before
+    position: absolute
+    font-weight: 600
+    font-size: 15px
+    left: 5px
+    top: 2px
+    color: $main-red
+
+  &--disadvantages
+    &:before
+      content: '+'
+
+  &--advantages
+    &:before
+      content: '–'
+      top: 0
+
+.review__text
+  font-weight: normal
+  font-size: 15px
+  line-height: 20px
+  color: $main-black
+  margin: 0
+
+  &--bold
+    font-weight: 600
+    margin-top: 13px
+    margin-bottom: 7px
+
+.review__info
+  display: flex
+  align-items: center
+  margin-top: 10px
+
+.review__time
+  font-weight: normal
+  font-size: 14px
+  color: $main-black
+  opacity: 0.4
+
+.review__answer-btn
+  height: min-content
+  border: none
+  background-color: transparent
+  color: $main-red
+  font-weight: normal
+  font-size: 16px
+  margin-left: 28px
+  cursor: pointer
+
+  &:hover
+    color: $hover-red
+

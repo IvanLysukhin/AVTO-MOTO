@@ -24,3 +24,38 @@
   justify-content: space-between
   margin-top: 0
   opacity: 0.5
+
+.specifications__price
+  font-weight: bold
+  font-size: 35px
+  color: $fonts-grey
+  margin: 0
+  margin-top: 21px
+  display: flex
+  align-items: center
+
+.specifications__not-price
+  font-weight: normal
+  font-size: 20px
+  opacity: 0.5
+  position: relative
+  margin-left: 40px
+
+  &:after
+    content: ''
+    position: absolute
+    top: 14px
+    left: -7px
+    width: 115%
+    height: 1px
+    background-color: $fonts-grey
+    transform: rotate(-5deg)
+
+
+.specifications__buttons-container
+  display: flex
+  flex-direction: column
+  margin-top: 37px
+
+.specifications__button
+  margin-bottom: 20px

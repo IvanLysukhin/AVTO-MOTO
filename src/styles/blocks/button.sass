@@ -1,0 +1,35 @@
+.button
+  background-color: $main-red
+  border: 1px solid $main-red
+  color: $main-white
+  cursor: pointer
+  font-size: 14px
+  text-align: center
+  letter-spacing: 0.12em
+  text-transform: uppercase
+  padding: 16px 20px
+  box-sizing: border-box
+  width: max-content
+
+  &:hover
+    background-color: $hover-red
+
+  &:active
+    background-color: #FFFFFF
+    color: $main-red
+    border: 1px solid $main-red
+
+  &--white
+    background-color: #FFFFFF
+    color: $main-red
+
+    &:hover
+      color: $hover-red
+      border-color: $hover-red
+      background-color: #FFFFFF
+
+    &:active
+      background-color: $main-red
+      border: 1px solid $main-red
+      color: $main-white
+
