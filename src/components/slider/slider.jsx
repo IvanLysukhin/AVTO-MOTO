@@ -16,13 +16,13 @@ function Slider() {
           </svg>
         </button>
         <ul className="slider__minis-list">
-          <li className="slider__minis-list">
+          <li className="slider__minis-item">
             <img className="slider__mini" src="img/black-1-min.jpg" width="128" height="80" alt="Миниатюра"/>
           </li>
-          <li className="slider__minis-list">
+          <li className="slider__minis-item">
             <img className="slider__mini" src="img/desktop_slide_2.jpg" width="128" height="80" alt=""/>
           </li>
-          <li className="slider__minis-list">
+          <li className="slider__minis-item">
             <img className="slider__mini" src="img/desktop_slide_3.jpg" width="128" height="80" alt=""/>
           </li>
         </ul>
