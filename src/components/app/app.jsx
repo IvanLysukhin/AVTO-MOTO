@@ -4,6 +4,7 @@ import Slider from '../slider/slider';
 import Specifications from '../specifications/specifications';
 import Tabs from '../tabs/tabs';
 import Footer from '../footer/footer';
+import ReviewForm from '../review-form/review-form';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Tabs/>
       </main>
       <Footer/>
+      <ReviewForm/>
     </div>
   );
 }
