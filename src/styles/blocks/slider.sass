@@ -19,6 +19,18 @@
     box-sizing: border-box
     width: max-content
 
+
+.slider__slide
+  transition: 2s
+  &--first
+    margin-left: 0
+
+  &--second
+    margin-left: -100%
+
+  &--third
+    margin-left: -200%
+
 .slider__controls
   display: flex
   align-items: center
@@ -43,7 +55,12 @@
     transform: scale(1.1)
 
   &--back
-    transform: rotate(180deg)
     margin-right: 30px
     &:hover
-      transform: rotate(180deg) scale(1.1)
+      transform: scale(1.1)
+
+  &--disabled
+    opacity: 0.5
+    &:hover
+      transform: scale(1)
+
