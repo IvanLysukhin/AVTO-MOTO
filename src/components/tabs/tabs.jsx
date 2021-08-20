@@ -3,8 +3,9 @@ import SpecList from '../spec-list/spec-list';
 import ReviewsList from '../reviews-list/reviews-list';
 import Contacts from '../contacts/contacts';
 import {TabType} from '../../constants';
+import PropTypes from 'prop-types';
 
-function Tabs() {
+function Tabs({popupHandler}) {
   const [tab, setTab] = useState(TabType.SPEC);
 
   const onTabBtnClickHandler = ({target}) => {
@@ -27,11 +28,16 @@ function Tabs() {
       </ul>
       <div className="tabs__container">
         {tab === TabType.SPEC ? <SpecList/> : ''}
-        {tab === TabType.REVIEWS ? <ReviewsList/> : ''}
+        {tab === TabType.REVIEWS ? <ReviewsList popupHandler={popupHandler}/> : ''}
         {tab === TabType.CONTACTS ? <Contacts/> : ''}
       </div>
     </section>
   );
 }
+
+Tabs.propTypes = {
+  popupHandler: PropTypes.func.isRequired,
+};
+
 
 export default Tabs;

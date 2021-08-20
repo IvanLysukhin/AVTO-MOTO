@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MainNav from '../main-nav/main-nav';
 import Slider from '../slider/slider';
 import Specifications from '../specifications/specifications';
 import Tabs from '../tabs/tabs';
 import Footer from '../footer/footer';
+import ReviewForm from '../review-form/review-form';
 
 function App() {
+  const [reviewFromState, setReviewFrom] = useState(false);
+
+  const changeReviewFromState = (boolean) => {
+    setReviewFrom(boolean);
+  };
+
   return (
     <div className="app">
       <header className="app__header app-header">
@@ -15,10 +22,10 @@ function App() {
         <h1 className="visually-hidden">AVTO MOTO объявления о продаже машин</h1>
         <Slider/>
         <Specifications/>
-        <Tabs/>
+        <Tabs popupHandler={changeReviewFromState}/>
       </main>
       <Footer/>
-      {/*<ReviewForm/>*/}
+      {reviewFromState && <ReviewForm popupHandler={changeReviewFromState}/>}
     </div>
   );
 }

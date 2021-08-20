@@ -1,12 +1,36 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 
-function ReviewForm() {
+function ReviewForm({popupHandler}) {
+
+  const onEscClickHandler = (evt) => {
+    if (evt.keyCode === 27) {
+      popupHandler(false);
+    }
+  };
+
+  const onCloseBtnClickHandler = (evt) => {
+    evt.preventDefault();
+    popupHandler(false);
+  };
+
+  const onOverlayClickHandler = ({target}) => {
+    if(target.classList.contains('review-form')) {
+      popupHandler(false);
+    }
+  };
+
+  useEffect(()=> {
+    window.addEventListener('keydown', onEscClickHandler);
+    return () => {window.removeEventListener('keydown', onEscClickHandler);};
+  }, []);
+
   return (
-    <div className="review-form">
+    <div className="review-form" onClick={onOverlayClickHandler}>
       <h3 className="visually-hidden">Форма отправки отзыва</h3>
 
       <form className="review-form__container" action="#" method="POST">
-        <button className="review-form__close-btn">
+        <button className="review-form__close-btn" onClick={onCloseBtnClickHandler}>
           Закрыть
           <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.6399 15.0096L7.50482 8.86495L1.36977 15.0096L0 13.6399L6.14469 7.50482L0 1.36978L1.36977 0L7.50482 6.14469L13.6399 0.00964652L15 1.36978L8.86495 7.50482L15 13.6399L13.6399 15.0096Z" fill="#9F9E9E"/>
@@ -76,5 +100,9 @@ function ReviewForm() {
     </div>
   );
 }
+
+ReviewForm.propTypes = {
+  popupHandler: PropTypes.func.isRequired,
+};
 
 export default ReviewForm;
