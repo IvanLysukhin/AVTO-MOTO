@@ -19,9 +19,9 @@ function Tabs () {
         </li>
       </ul>
       <div className="tabs__container">
-        {/*<SpecList/>*/}
+        <SpecList/>
         {/*<ReviewsList/>*/}
-        <Contacts/>
+        {/*<Contacts/>*/}
       </div>
     </section>
   );

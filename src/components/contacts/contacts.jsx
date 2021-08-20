@@ -14,11 +14,11 @@ function Contacts () {
         </li>
         <li className="contacts__item">
           <p className="contacts__title">Телефон</p>
-          <a className="contacts__text" href="tel:+78003335599">8 (800) 333-55-99</a>
+          <a className="contacts__text contacts__text--link" href="tel:+78003335599">8 (800) 333-55-99</a>
         </li>
         <li className="contacts__item">
-          <p className="contacts__title">Телефон</p>
-          <a className="contacts__text" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
+          <p className="contacts__title">E-mail</p>
+          <a className="contacts__text contacts__text--link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
         </li>
       </ul>
       <div className="contacts__map-box">
