@@ -19,7 +19,7 @@ function App() {
         <Tabs/>
       </main>
       <Footer/>
-      <ReviewForm/>
+      {/*<ReviewForm/>*/}
     </div>
   );
 }

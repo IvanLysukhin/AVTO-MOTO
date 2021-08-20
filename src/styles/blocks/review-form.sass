@@ -13,3 +13,103 @@
   background-color: $light-grey
   margin: 0 auto
   padding: 30px 35px 35px 35px
+  display: flex
+  flex-direction: column
+  align-items: center
+  position: relative
+
+.review-form__title
+  font-weight: 600
+  font-size: 25px
+  color: $fonts-grey
+  text-align: center
+  margin: 0
+
+.review-form__close-btn
+  position: absolute
+  top: 24px
+  right: 29px
+  font-size: 0
+  width: 15px
+  height: 15px
+  background-color: transparent
+  border: none
+  cursor: pointer
+
+.review-form__list
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: repeat(3, auto)
+  column-gap: 27px
+  row-gap: 14px
+  width: 100%
+  margin-top: 46px
+
+
+.review-form__item
+
+  &:last-of-type
+    grid-column-start: 2
+    grid-column-end: 3
+    grid-row-start: 2
+    grid-row-end: -1
+
+  &--stars
+    grid-column-start: 2
+    grid-column-end: 3
+    grid-row-start: 1
+    grid-row-end: 2
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.review-form__rate-name
+  font-weight: 600
+  font-size: 15px
+  color: $main-black
+  margin-top: 3px
+  margin-right: 2px
+
+
+.review-form__input
+  padding: 15px 25px
+  font-weight: normal
+  font-size: 14px
+  font-family: 'Open Sans', 'Arial', sans-serif
+  color: $dark-grey
+  box-sizing: border-box
+  width: 300px
+
+.review-form__text-area
+  box-sizing: border-box
+  width: 300px
+  height: 118px
+  resize: none
+  padding: 15px 25px
+  font-weight: normal
+  font-size: 14px
+  font-family: 'Open Sans', 'Arial', sans-serif
+  color: $dark-grey
+
+.review-form__rating
+  margin-top: -10px
+  display: flex
+  flex-direction: row-reverse
+
+.review-form__rating-label:not(:first-of-type)
+  margin-right: 10px
+
+.review-form__btn
+  margin-top: 15px
+  padding: 17px 25px
+
+.review-form__rating-label
+  cursor: pointer
+
+.review-form__star-image
+  width: 27px
+  height: 27px
+
+.review-form__rating-input:checked ~ .review-form__rating-label .review-form__star-image
+  fill: red
+
