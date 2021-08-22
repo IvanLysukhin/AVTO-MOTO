@@ -1,6 +1,12 @@
 import React from 'react';
+import {YMaps, Map, Placemark} from 'react-yandex-maps';
 
-function Contacts () {
+const OFFICE_COORDINATE = [59.968137, 30.318272];
+const MARKER_COORDINATE = [59.968137, 30.316272];
+const DEFAULT_ZOOM = 15;
+
+
+function Contacts() {
   return (
     <div className="tabs__contacts contacts">
       <ul className="contacts__list">
@@ -21,9 +27,23 @@ function Contacts () {
           <a className="contacts__text contacts__text--link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
         </li>
       </ul>
-      <div className="contacts__map-box">
-        <img src="img/map.jpg" alt="Санкт-Петербург, набережная реки Карповки, дом 5"/>
-      </div>
+      <YMaps>
+        <Map className="contacts__map-box" defaultState={{center: OFFICE_COORDINATE, zoom: DEFAULT_ZOOM}}>
+          {[MARKER_COORDINATE].map((coordinate) =>
+            (
+              <Placemark
+                key={coordinate[0]}
+                geometry={coordinate}
+                options={{
+                  iconLayout: 'default#image',
+                  iconImageHref: 'img/location.svg',
+                  iconImageSize: [30, 42],
+                  iconImageOffset: [-3, -42],
+                }}
+              />
+            ))}
+        </Map>
+      </YMaps>
     </div>
   );
 }
