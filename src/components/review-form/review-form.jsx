@@ -1,7 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
+import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
+import {nanoid} from '@reduxjs/toolkit';
+import {addReview} from '../../store/actions';
+import {saveReviewsData} from '../../utils';
 
 function ReviewForm({popupHandler}) {
+  const dispatch = useDispatch();
+
+  const nameInput = useRef();
+  const advantageInput = useRef();
+  const disadvantageInput = useRef();
+  const rateChecks = useRef();
+  const commentInput = useRef();
 
   const onEscClickHandler = (evt) => {
     if (evt.keyCode === 27) {
@@ -18,6 +29,29 @@ function ReviewForm({popupHandler}) {
     if(target.classList.contains('review-form')) {
       popupHandler(false);
     }
+  };
+
+  const onSubmitBtnClickHandler = (evt) => {
+    evt.preventDefault();
+    const inputs = Object.values(rateChecks.current.children).filter((tag) => tag.tagName === 'INPUT');
+    const checkedIndex = inputs.findIndex((input) => input.checked);
+
+
+    if (checkedIndex >= 0) {
+      const formData = {
+        id: nanoid(3),
+        name: nameInput.current.value,
+        advantage: advantageInput.current.value,
+        disadvantage: disadvantageInput.current.value,
+        comment: commentInput.current.value,
+        rate: Number(inputs[checkedIndex].value),
+        date: new Date().toISOString(),
+      };
+
+      dispatch(addReview(formData));
+      saveReviewsData(formData);
+    }
+
   };
 
   useEffect(()=> {
@@ -40,19 +74,19 @@ function ReviewForm({popupHandler}) {
         <ul className="review-form__list">
           <li className="review-form__item">
             <label className="visually-hidden" htmlFor="name">Имя</label>
-            <input className="review-form__input" type="text" id="name" name="name" placeholder="Имя"/>
+            <input className="review-form__input" type="text" id="name" name="name" placeholder="Имя" ref={nameInput}/>
           </li>
           <li className="review-form__item">
             <label className="visually-hidden" htmlFor="advantage">Достоинства</label>
-            <input className="review-form__input" type="text" id="advantage" name="advantage" placeholder="Достоинства"/>
+            <input className="review-form__input" type="text" id="advantage" name="advantage" placeholder="Достоинства" ref={advantageInput}/>
           </li>
           <li className="review-form__item">
             <label className="visually-hidden" htmlFor="disadvantage">Недостатки</label>
-            <input className="review-form__input" type="text" id="disadvantage" name="disadvantage" placeholder="Недостатки"/>
+            <input className="review-form__input" type="text" id="disadvantage" name="disadvantage" placeholder="Недостатки" ref={disadvantageInput}/>
           </li>
           <li className="review-form__item review-form__item--stars">
             <p className="review-form__rate-name">Оцените товар:</p>
-            <div className="review-form__rating">
+            <div className="review-form__rating" ref={rateChecks}>
 
               <input className="review-form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio"/>
               <label htmlFor="5-stars" className="review-form__rating-label review-form__rating-label" title="perfect">
@@ -92,10 +126,10 @@ function ReviewForm({popupHandler}) {
           </li>
           <li className="review-form__item">
             <label className="visually-hidden" htmlFor="comment">Комментарий</label>
-            <textarea className="review-form__text-area" name="comment" id="comment" cols="30" rows="10" placeholder="Комментарий"/>
+            <textarea className="review-form__text-area" name="comment" id="comment" cols="30" rows="10" placeholder="Комментарий" ref={commentInput}/>
           </li>
         </ul>
-        <button className="review-form__btn button">оставить отзыв</button>
+        <button className="review-form__btn button" onClick={onSubmitBtnClickHandler}>оставить отзыв</button>
       </form>
     </div>
   );

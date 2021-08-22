@@ -45,7 +45,7 @@ Review.propTypes = {
     disadvantage: PropTypes.string,
     comment: PropTypes.string.isRequired,
     rate: PropTypes.number.isRequired,
-    date: PropTypes.object.isRequired,
+    date: PropTypes.string.isRequired,
   }).isRequired,
 };
 
