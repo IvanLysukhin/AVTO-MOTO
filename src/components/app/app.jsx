@@ -7,7 +7,7 @@ import Footer from '../footer/footer';
 import ReviewForm from '../review-form/review-form';
 
 function App() {
-  const [reviewFromState, setReviewFrom] = useState(true);
+  const [reviewFromState, setReviewFrom] = useState(false);
   const changeReviewFormState = (boolean) => {
     setReviewFrom(boolean);
   };

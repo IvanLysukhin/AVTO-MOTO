@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import {nanoid} from '@reduxjs/toolkit';
@@ -7,6 +7,8 @@ import {saveReviewsData} from '../../utils';
 
 function ReviewForm({popupHandler}) {
   const dispatch = useDispatch();
+  const [errorName, setNameError] = useState(false);
+  const [errorComment, setCommentError] = useState(false);
 
   const nameInput = useRef();
   const advantageInput = useRef();
@@ -31,25 +33,50 @@ function ReviewForm({popupHandler}) {
     }
   };
 
+  const onNameInputInputHandler = ({target}) => {
+    if (target.value.length > 0) {
+      setNameError(false);
+    }
+  };
+
+  const onCommentInputInputHandler = ({target}) => {
+    if (target.value.length > 0) {
+      setCommentError(false);
+    }
+  };
+
   const onSubmitBtnClickHandler = (evt) => {
     evt.preventDefault();
     const inputs = Object.values(rateChecks.current.children).filter((tag) => tag.tagName === 'INPUT');
     const checkedIndex = inputs.findIndex((input) => input.checked);
 
+    const name = nameInput.current.value;
+    const comment = commentInput.current.value;
+
+    if (!name) {
+      setNameError(true);
+      return;
+    }
+
+    if (!comment) {
+      setCommentError(true);
+      return;
+    }
 
     if (checkedIndex >= 0) {
       const formData = {
         id: nanoid(3),
-        name: nameInput.current.value,
+        name,
         advantage: advantageInput.current.value,
         disadvantage: disadvantageInput.current.value,
-        comment: commentInput.current.value,
+        comment,
         rate: Number(inputs[checkedIndex].value),
         date: new Date().toISOString(),
       };
 
       dispatch(addReview(formData));
       saveReviewsData(formData);
+      popupHandler(false);
     }
 
   };
@@ -73,8 +100,18 @@ function ReviewForm({popupHandler}) {
         <h4 className="review-form__title">Оставить отзыв</h4>
         <ul className="review-form__list">
           <li className="review-form__item">
-            <label className="visually-hidden" htmlFor="name">Имя</label>
-            <input className="review-form__input" type="text" id="name" name="name" placeholder="Имя" ref={nameInput}/>
+            {errorName && <div className="review-form__valid-message">Пожалуйста, заполните поле</div>}
+            <label className="visually-hidden review-form__label review-form__label--required" htmlFor="name">Имя</label>
+            <input
+              className={`review-form__input ${errorName && 'review-form__input--error'}`}
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Имя"
+              ref={nameInput}
+              onInput={onNameInputInputHandler}
+              autoFocus
+            />
           </li>
           <li className="review-form__item">
             <label className="visually-hidden" htmlFor="advantage">Достоинства</label>
@@ -125,8 +162,18 @@ function ReviewForm({popupHandler}) {
             </div>
           </li>
           <li className="review-form__item">
-            <label className="visually-hidden" htmlFor="comment">Комментарий</label>
-            <textarea className="review-form__text-area" name="comment" id="comment" cols="30" rows="10" placeholder="Комментарий" ref={commentInput}/>
+            {errorComment && <div className="review-form__valid-message">Пожалуйста, заполните поле</div>}
+            <label className="visually-hidden review-form__label review-form__label--required review-form__label--text" htmlFor="comment">Комментарий</label>
+            <textarea
+              className={`review-form__text-area ${errorComment && 'review-form__text-area--error'}`}
+              name="comment"
+              id="comment"
+              cols="30"
+              rows="10"
+              placeholder="Комментарий"
+              ref={commentInput}
+              onInput={onCommentInputInputHandler}
+            />
           </li>
         </ul>
         <button className="review-form__btn button" onClick={onSubmitBtnClickHandler}>оставить отзыв</button>

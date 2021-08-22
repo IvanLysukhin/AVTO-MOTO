@@ -47,7 +47,7 @@
 
 
 .review-form__item
-
+  position: relative
   &:last-of-type
     grid-column-start: 2
     grid-column-end: 3
@@ -70,6 +70,31 @@
   margin-top: 3px
   margin-right: 2px
 
+.review-form__label
+  &--required
+    position: relative
+    font-size: 0
+    width: 100%
+
+    &::before
+      content: '*'
+      position: absolute
+      top: -25px
+      left: 10px
+      color: $main-red
+      font-size: 17px
+
+  &--text
+    &::before
+      top: -105px
+
+.review-form__valid-message
+  position: absolute
+  top: -20px
+  font-weight: normal
+  font-size: 14px
+  color: $error-red
+
 
 .review-form__input
   padding: 15px 25px
@@ -77,8 +102,12 @@
   font-size: 14px
   font-family: 'Open Sans', 'Arial', sans-serif
   color: $dark-grey
+  border: 1px solid rgba(72, 73, 77, 0.2)
   box-sizing: border-box
   width: 300px
+
+  &--error
+    border-color: $error-red
 
 .review-form__text-area
   box-sizing: border-box
@@ -88,8 +117,12 @@
   padding: 15px 25px
   font-weight: normal
   font-size: 14px
+  border: 1px solid rgba(72, 73, 77, 0.2)
   font-family: 'Open Sans', 'Arial', sans-serif
   color: $dark-grey
+
+  &--error
+    border-color: $error-red
 
 .review-form__rating
   margin-top: -10px
