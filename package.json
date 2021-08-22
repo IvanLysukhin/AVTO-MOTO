@@ -13,7 +13,8 @@
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
     "react-redux": "^7.2.2",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "@reduxjs/toolkit": "^1.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

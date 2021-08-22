@@ -6,7 +6,7 @@ import {TabType} from '../../constants';
 import PropTypes from 'prop-types';
 
 function Tabs({popupHandler}) {
-  const [tab, setTab] = useState(TabType.SPEC);
+  const [tab, setTab] = useState(TabType.REVIEWS);
 
   const onTabBtnClickHandler = ({target}) => {
     setTab(target.getAttribute('data-tab'));

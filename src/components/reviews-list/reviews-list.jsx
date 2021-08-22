@@ -17,7 +17,15 @@ function ReviewsList({popupHandler}) {
         оставить отзыв
       </button>
       <ul className="reviews-list__list">
-        {Array(2).fill('').map((el, i) => <Review key={i}/>)}
+        {[{
+          id: 0,
+          name: 'Борис Иванов',
+          advantage: 'мощность, внешний вид',
+          disadvantage: 'Слабые тормозные колодки (пришлось заменить)',
+          comment: 'Взяли по трейд-ин, на выгодных условиях у дилера. Стильная внешка и крут по базовым характеристикам. Не думал, что пересяду на китайский автопром, но сейчас гоняю и понимаю, что полностью доволен.',
+          rate: 4,
+          date: new Date(),
+        }].map((review, i) => <Review key={review.id} review={review}/>)}
       </ul>
     </div>
   );

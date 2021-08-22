@@ -3,3 +3,7 @@ export const TabType = {
   REVIEWS: 'REVIEWS',
   CONTACTS: 'CONTACTS',
 };
+
+export const ActionType = {
+  ADD_REVIEW: 'ADD_REVIEW',
+};

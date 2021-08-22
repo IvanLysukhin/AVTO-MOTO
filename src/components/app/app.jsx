@@ -9,7 +9,7 @@ import ReviewForm from '../review-form/review-form';
 function App() {
   const [reviewFromState, setReviewFrom] = useState(false);
 
-  const changeReviewFromState = (boolean) => {
+  const changeReviewFormState = (boolean) => {
     setReviewFrom(boolean);
   };
 
@@ -22,10 +22,10 @@ function App() {
         <h1 className="visually-hidden">AVTO MOTO объявления о продаже машин</h1>
         <Slider/>
         <Specifications/>
-        <Tabs popupHandler={changeReviewFromState}/>
+        <Tabs popupHandler={changeReviewFormState}/>
       </main>
       <Footer/>
-      {reviewFromState && <ReviewForm popupHandler={changeReviewFromState}/>}
+      {reviewFromState && <ReviewForm popupHandler={changeReviewFormState}/>}
     </div>
   );
 }
