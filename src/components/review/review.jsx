@@ -1,5 +1,5 @@
 import React from 'react';
-import {calcRate} from '../../utils';
+import {calcRate, formatTime} from '../../utils';
 import PropTypes from 'prop-types';
 
 function Review({review}) {
@@ -30,7 +30,7 @@ function Review({review}) {
           <p className="rating__advice">{rate > 2 ? 'Советую' : 'Не советую'}</p>
         </div>
         <div className="review__info">
-          <p className="review__time">1 минуту назад</p>
+          <p className="review__time">{formatTime(date)}</p>
           <button className="review__answer-btn">Ответить</button>
         </div>
       </article>

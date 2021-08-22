@@ -2,14 +2,14 @@ import React from 'react';
 import Review from '../review/review';
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
-import {getReviews} from '../../store/selectors';
+import {getSortByTimeReviews} from '../../store/selectors';
 
 function ReviewsList({popupHandler}) {
   const onOpenBtnClickHandler = () => {
     popupHandler(true);
   };
 
-  const reviews = useSelector(getReviews);
+  const reviews = useSelector(getSortByTimeReviews);
 
   return (
     <div className="reviews-list">
