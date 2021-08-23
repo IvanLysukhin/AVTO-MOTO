@@ -1,9 +1,9 @@
-import {REVIEWS} from './constants';
+import {MAX_RATE, REVIEWS} from './constants';
 import dayjs from 'dayjs';
 import relativeTime  from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
-export const calcRate = (rate) => `${(rate / 5) * 100}%`;
+export const calcRate = (rate) => `${(rate / MAX_RATE) * 100}%`;
 
 export const saveReviewsData = (reviewsData) => {
   const prevReviews = JSON.parse(localStorage.getItem(REVIEWS));

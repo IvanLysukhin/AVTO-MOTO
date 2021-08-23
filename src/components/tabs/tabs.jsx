@@ -17,13 +17,31 @@ function Tabs({popupHandler}) {
       <h2 className="visually-hidden">Информация об объявлении</h2>
       <ul className="tabs__buttons-list">
         <li className="tabs__buttons-item">
-          <button className={`tabs__button ${tab === TabType.SPEC ? 'tabs__button--current' : ''}`} data-tab={TabType.SPEC} onClick={onTabBtnClickHandler}>Характеристики</button>
+          <button
+            className={`tabs__button ${tab === TabType.SPEC ? 'tabs__button--current' : ''}`}
+            data-tab={TabType.SPEC}
+            onClick={onTabBtnClickHandler}
+          >
+            Характеристики
+          </button>
         </li>
         <li className="tabs__buttons-item">
-          <button className={`tabs__button ${tab === TabType.REVIEWS ? 'tabs__button--current' : ''}`} data-tab={TabType.REVIEWS} onClick={onTabBtnClickHandler}>Отзывы</button>
+          <button
+            className={`tabs__button ${tab === TabType.REVIEWS ? 'tabs__button--current' : ''}`}
+            data-tab={TabType.REVIEWS}
+            onClick={onTabBtnClickHandler}
+          >
+            Отзывы
+          </button>
         </li>
         <li className="tabs__buttons-item">
-          <button className={`tabs__button ${tab === TabType.CONTACTS ? 'tabs__button--current' : ''}`} data-tab={TabType.CONTACTS} onClick={onTabBtnClickHandler}>Контакты</button>
+          <button
+            className={`tabs__button ${tab === TabType.CONTACTS ? 'tabs__button--current' : ''}`}
+            data-tab={TabType.CONTACTS}
+            onClick={onTabBtnClickHandler}
+          >
+            Контакты
+          </button>
         </li>
       </ul>
       <div className="tabs__container">
