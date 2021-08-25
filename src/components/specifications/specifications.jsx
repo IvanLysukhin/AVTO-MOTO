@@ -2,7 +2,7 @@ import React from 'react';
 
 function Specifications () {
   return (
-    <section className="main-nav-container__specifications specifications">
+    <section className="specifications">
       <h2 className="visually-hidden">Характеристики</h2>
       <p className="specifications__name">Марпех 11</p>
       <ul className="specifications__list">

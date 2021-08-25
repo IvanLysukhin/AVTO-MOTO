@@ -13,7 +13,7 @@ function Tabs({popupHandler}) {
   };
 
   return (
-    <section className="main-nav-container__tabs tabs">
+    <section className="main-container__tabs tabs">
       <h2 className="visually-hidden">Информация об объявлении</h2>
       <ul className="tabs__buttons-list">
         <li className="tabs__buttons-item">

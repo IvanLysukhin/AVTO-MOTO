@@ -17,7 +17,7 @@ function App() {
       <header className="app__header app-header">
         <MainNav/>
       </header>
-      <main className="app_main main-container">
+      <main className="main-container">
         <h1 className="visually-hidden">AVTO MOTO объявления о продаже машин</h1>
         <Slider/>
         <Specifications/>

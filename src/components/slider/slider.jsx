@@ -26,7 +26,7 @@ function Slider() {
   };
 
   return (
-    <section className="main-nav-container__slider slider">
+    <section className="slider">
       <h2 className="visually-hidden">Слайдер</h2>
       <div className="slider__pics-box">
         <div className={`slider__slide ${getCurrentSlideClass(slide)}`}>
