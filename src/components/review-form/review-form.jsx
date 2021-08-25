@@ -82,6 +82,13 @@ function ReviewForm({popupHandler}) {
     };
   });
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'scroll';
+    };
+  });
+
   return (
     <div className="review-form" onClick={overlayClickHandler}>
       <h3 className="visually-hidden">Форма отправки отзыва</h3>
