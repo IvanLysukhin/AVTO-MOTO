@@ -1,6 +1,9 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
+import {getPopupState} from '../../store/selectors';
 
 function Specifications () {
+  const isPopupOpen = useSelector(getPopupState);
   return (
     <section className="specifications">
       <h2 className="visually-hidden">Характеристики</h2>
@@ -73,8 +76,8 @@ function Specifications () {
       </ul>
       <p className="specifications__price">2 300 000 ₽ <span className="specifications__not-price">2 400 000 ₽</span></p>
       <div className="specifications__buttons-container">
-        <button className="specifications__button specifications__button--request button">оставить заявку</button>
-        <button className="specifications__button specifications__button--credit button button--white">В КРЕДИТ ОТ 11 000 ₽</button>
+        <button className="specifications__button specifications__button--request button" tabIndex={isPopupOpen ? '-1' : ''}>оставить заявку</button>
+        <button className="specifications__button specifications__button--credit button button--white" tabIndex={isPopupOpen ? '-1' : ''}>В КРЕДИТ ОТ 11 000 ₽</button>
       </div>
     </section>
   );

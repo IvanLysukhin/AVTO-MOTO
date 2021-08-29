@@ -1,8 +1,9 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {addReview, loadReviews} from './actions';
+import {addReview, loadReviews, openPopup} from './actions';
 
 const initialState = {
   reviews: [],
+  isPopupOpen: false,
 };
 
 export const reviewsData = createReducer(initialState, (builder) => {
@@ -16,6 +17,9 @@ export const reviewsData = createReducer(initialState, (builder) => {
         return;
       }
       state.reviews = action.payload;
+    })
+    .addCase(openPopup,(state, action) => {
+      state.isPopupOpen = action.payload;
     });
 });
 

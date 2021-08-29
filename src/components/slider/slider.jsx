@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {getPopupState} from '../../store/selectors';
 
 function Slider() {
 
   const [slide, setSlide] = useState(1);
+  const isPopupOpen = useSelector(getPopupState);
 
   const onNextButtonClick = () => {
     setSlide((prevSlide) => prevSlide + 1);
@@ -45,6 +48,7 @@ function Slider() {
           disabled={slide === 1}
           onClick={onBackButtonClick}
           aria-label={'Предыдущий слайд'}
+          tabIndex={isPopupOpen ? '-1' : ''}
         >
           <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.00427 6.17188L6.91841 0.368597M1.00427 6.17188L6.69294 11.9692M1.00427 6.17188L19.9813 6.35128" stroke="#48494D"/>
@@ -52,13 +56,13 @@ function Slider() {
         </button>
         <ul className="slider__minis-list">
           <li className="slider__minis-item">
-            <img className="slider__mini" src="img/black-1-min.jpg" width="128" height="80" alt="Миниатюра"/>
+            <img className="slider__mini" src="img/black-1-min.jpg" width="128" height="80" alt="Миниатюра Общий вид авто"/>
           </li>
           <li className="slider__minis-item">
-            <img className="slider__mini" src="img/desktop_slide_2.jpg" width="128" height="80" alt=""/>
+            <img className="slider__mini" src="img/desktop_slide_2.jpg" width="128" height="80" alt="Миниатюра 2 Салон"/>
           </li>
           <li className="slider__minis-item">
-            <img className="slider__mini" src="img/desktop_slide_3.jpg" width="128" height="80" alt=""/>
+            <img className="slider__mini" src="img/desktop_slide_3.jpg" width="128" height="80" alt="Миниатюра 3 Приборная панель"/>
           </li>
         </ul>
         <button
@@ -66,6 +70,7 @@ function Slider() {
           onClick={onNextButtonClick}
           disabled={slide === 3}
           aria-label={'Следующий слайд'}
+          tabIndex={isPopupOpen ? '-1' : ''}
         >
           <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18.9873 6.17188L13.0747 0.368597M18.9873 6.17188L13.3001 11.9692M18.9873 6.17188L0.0150977 6.35128" stroke="#48494D"/>

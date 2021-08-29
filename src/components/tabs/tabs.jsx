@@ -3,10 +3,12 @@ import SpecList from '../spec-list/spec-list';
 import ReviewsList from '../reviews-list/reviews-list';
 import Contacts from '../contacts/contacts';
 import {TabType} from '../../constants';
-import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
+import {getPopupState} from '../../store/selectors';
 
-function Tabs({popupHandler}) {
+function Tabs() {
   const [tab, setTab] = useState(TabType.SPEC);
+  const isPopupOpen = useSelector(getPopupState);
 
   const onTabBtnClickHandler = ({target}) => {
     setTab(target.getAttribute('data-tab'));
@@ -21,6 +23,7 @@ function Tabs({popupHandler}) {
             className={`tabs__button ${tab === TabType.SPEC ? 'tabs__button--current' : ''}`}
             data-tab={TabType.SPEC}
             onClick={onTabBtnClickHandler}
+            tabIndex={isPopupOpen ? '-1' : ''}
           >
             Характеристики
           </button>
@@ -30,6 +33,7 @@ function Tabs({popupHandler}) {
             className={`tabs__button ${tab === TabType.REVIEWS ? 'tabs__button--current' : ''}`}
             data-tab={TabType.REVIEWS}
             onClick={onTabBtnClickHandler}
+            tabIndex={isPopupOpen ? '-1' : ''}
           >
             Отзывы
           </button>
@@ -39,6 +43,7 @@ function Tabs({popupHandler}) {
             className={`tabs__button ${tab === TabType.CONTACTS ? 'tabs__button--current' : ''}`}
             data-tab={TabType.CONTACTS}
             onClick={onTabBtnClickHandler}
+            tabIndex={isPopupOpen ? '-1' : ''}
           >
             Контакты
           </button>
@@ -46,16 +51,12 @@ function Tabs({popupHandler}) {
       </ul>
       <div className="tabs__container">
         {tab === TabType.SPEC ? <SpecList/> : ''}
-        {tab === TabType.REVIEWS ? <ReviewsList popupHandler={popupHandler}/> : ''}
+        {tab === TabType.REVIEWS ? <ReviewsList/> : ''}
         {tab === TabType.CONTACTS ? <Contacts/> : ''}
       </div>
     </section>
   );
 }
-
-Tabs.propTypes = {
-  popupHandler: PropTypes.func.isRequired,
-};
 
 
 export default Tabs;

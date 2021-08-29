@@ -1,12 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {useDispatch} from 'react-redux';
-import PropTypes from 'prop-types';
 import {nanoid} from '@reduxjs/toolkit';
-import {addReview} from '../../store/actions';
+import {addReview, openPopup} from '../../store/actions';
 import {saveReviewsData} from '../../utils';
 import {InputName} from '../../constants';
 
-function ReviewForm({popupHandler}) {
+function ReviewForm() {
   const dispatch = useDispatch();
   const firstInput = useRef();
   const textInput = useRef();
@@ -18,18 +17,18 @@ function ReviewForm({popupHandler}) {
 
   const escClickHandler = (evt) => {
     if (evt.keyCode === 27) {
-      popupHandler(false);
+      dispatch(openPopup(false));
     }
   };
 
   const closeBtnClickHandler = (evt) => {
     evt.preventDefault();
-    popupHandler(false);
+    dispatch(openPopup(false));
   };
 
   const overlayClickHandler = ({target}) => {
     if (target.classList.contains('review-form')) {
-      popupHandler(false);
+      dispatch(openPopup(false));
     }
   };
 
@@ -73,7 +72,7 @@ function ReviewForm({popupHandler}) {
 
       dispatch(addReview(formData));
       saveReviewsData(formData);
-      popupHandler(false);
+      dispatch(openPopup(false));
     }
   };
 
@@ -207,9 +206,5 @@ function ReviewForm({popupHandler}) {
     </div>
   );
 }
-
-ReviewForm.propTypes = {
-  popupHandler: PropTypes.func.isRequired,
-};
 
 export default ReviewForm;

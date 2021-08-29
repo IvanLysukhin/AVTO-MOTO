@@ -1,9 +1,12 @@
 import React from 'react';
 import {calcRate, formatTime} from '../../utils';
 import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
+import {getPopupState} from '../../store/selectors';
 
 function Review({review}) {
   const {name, advantage, disadvantage, comment, rate, date} = review;
+  const isPopupOpen = useSelector(getPopupState);
 
   return (
     <li className="reviews-list__item review">
@@ -31,7 +34,7 @@ function Review({review}) {
         </div>
         <div className="review__info">
           <p className="review__time">{formatTime(date)}</p>
-          <button className="review__answer-btn">Ответить</button>
+          <button className="review__answer-btn" tabIndex={isPopupOpen ? '-1' : ''}>Ответить</button>
         </div>
       </article>
     </li>

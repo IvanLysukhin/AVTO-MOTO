@@ -9,6 +9,7 @@ export const REVIEWS = 'reviews';
 export const ActionType = {
   ADD_REVIEW: 'ADD_REVIEW',
   LOAD_REVIEW: 'LOAD_REVIEW',
+  OPEN_POPUP: 'OPEN_POPUP',
 };
 
 export const MAX_RATE = 5;

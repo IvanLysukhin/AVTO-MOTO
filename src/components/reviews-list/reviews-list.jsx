@@ -1,12 +1,17 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 import Review from '../review/review';
-import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
-import {getSortByTimeReviews} from '../../store/selectors';
+import {getPopupState, getSortByTimeReviews} from '../../store/selectors';
+import DefaultReviews from '../default-reviews/default-reviews';
+import {openPopup} from '../../store/actions';
 
-function ReviewsList({popupHandler}) {
+function ReviewsList() {
+
+  const dispatch = useDispatch();
+  const isPopupOpen = useSelector(getPopupState);
   const onOpenBtnClickHandler = () => {
-    popupHandler(true);
+    dispatch(openPopup(true));
   };
 
   const reviews = useSelector(getSortByTimeReviews);
@@ -17,18 +22,16 @@ function ReviewsList({popupHandler}) {
       <button
         className="reviews-list__button button button--white"
         onClick={onOpenBtnClickHandler}
+        tabIndex={isPopupOpen ? '-1' : ''}
       >
         оставить отзыв
       </button>
       <ul className="reviews-list__list">
-        {reviews.map((review, i) => <Review key={review.id} review={review}/>)}
+        {!reviews.length && <DefaultReviews/>}
+        {reviews.map((review) => <Review key={review.id} review={review}/>)}
       </ul>
     </div>
   );
 }
-
-ReviewsList.propTypes = {
-  popupHandler: PropTypes.func.isRequired,
-};
 
 export default ReviewsList;
