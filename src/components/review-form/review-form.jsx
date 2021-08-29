@@ -9,17 +9,12 @@ function ReviewForm() {
   const dispatch = useDispatch();
   const firstInput = useRef();
   const textInput = useRef();
+  const form = useRef();
 
   const [filedError, setFieldError] = useState({
     [InputName.NAME]: false,
     [InputName.COMMENT]: false,
   });
-
-  const escClickHandler = (evt) => {
-    if (evt.keyCode === 27) {
-      dispatch(openPopup(false));
-    }
-  };
 
   const closeBtnClickHandler = (evt) => {
     evt.preventDefault();
@@ -40,7 +35,7 @@ function ReviewForm() {
 
   const formSubmitHandler = (evt) => {
     evt.preventDefault();
-    const data = new FormData(evt.target);
+    const data = new FormData(form.current);
 
     const name = data.get(InputName.NAME);
     const comment = data.get(InputName.COMMENT);
@@ -76,10 +71,20 @@ function ReviewForm() {
     }
   };
 
+  const keydownHandler = (evt) => {
+    if (evt.keyCode === 27) {
+      dispatch(openPopup(false));
+    }
+
+    if (evt.keyCode === 13) {
+      formSubmitHandler(evt);
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener('keydown', escClickHandler);
+    window.addEventListener('keydown', keydownHandler);
     return () => {
-      window.removeEventListener('keydown', escClickHandler);
+      window.removeEventListener('keydown', keydownHandler);
     };
   });
 
@@ -112,7 +117,7 @@ function ReviewForm() {
     <div className="review-form" onClick={overlayClickHandler}>
       <h3 className="visually-hidden">Форма отправки отзыва</h3>
 
-      <form className="review-form__container" action="#" method="POST" onSubmit={formSubmitHandler}>
+      <form className="review-form__container" action="#" method="POST" ref={form} onSubmit={formSubmitHandler}>
         <button className="review-form__close-btn" onClick={closeBtnClickHandler} tabIndex="11">
           Закрыть
           <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
