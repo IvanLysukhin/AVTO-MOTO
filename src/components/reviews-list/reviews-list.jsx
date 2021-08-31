@@ -27,7 +27,7 @@ function ReviewsList() {
         оставить отзыв
       </button>
       <ul className="reviews-list__list">
-        {!reviews.length && <DefaultReviews/>}
+        <DefaultReviews/>
         {reviews.map((review) => <Review key={review.id} review={review}/>)}
       </ul>
     </div>
