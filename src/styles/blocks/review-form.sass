@@ -27,19 +27,17 @@
 
 .review-form__close-btn
   position: absolute
-  top: 24px
-  right: 29px
+  top: 20px
+  right: 16px
   font-size: 0
-  width: 15px
-  height: 15px
+  width: 30px
+  height: 30px
   background-color: transparent
   border: none
   cursor: pointer
-
-.review-form__close-btn svg
-  position: absolute
-  top: 0
-  left: 0
+  display: flex
+  align-items: center
+  justify-content: center
 
 .review-form__list
   display: grid
@@ -133,6 +131,9 @@
   margin-top: -10px
   display: flex
   flex-direction: row-reverse
+
+  &--focus
+    outline: 2px solid $main-red
 
 .review-form__rating-label:not(:first-of-type)
   margin-right: 10px

@@ -10,6 +10,7 @@ function ReviewForm() {
   const firstInput = useRef();
   const textInput = useRef();
   const form = useRef();
+  const [focus, setFocus] = useState(false);
 
   const [filedError, setFieldError] = useState({
     [InputName.NAME]: false,
@@ -106,10 +107,12 @@ function ReviewForm() {
   };
 
   const checkListFocusHandler = () => {
+    setFocus(true);
     window.addEventListener('keydown', disableArrows);
   };
 
   const checkListBlurHandler = () => {
+    setFocus(false);
     window.removeEventListener('keydown', disableArrows);
   };
 
@@ -151,7 +154,7 @@ function ReviewForm() {
           </li>
           <li className="review-form__item review-form__item--stars">
             <p className="review-form__rate-name">Оцените товар:</p>
-            <div className="review-form__rating" onFocus={checkListFocusHandler} onBlur={checkListBlurHandler}>
+            <div className={`review-form__rating ${focus && 'review-form__rating--focus'}`} onFocus={checkListFocusHandler} onBlur={checkListBlurHandler}>
               <input className="review-form__rating-input visually-hidden" name={InputName.RATE} value="5" id="5-stars" type="radio" tabIndex="8" />
               <label htmlFor="5-stars" className="review-form__rating-label review-form__rating-label" title="perfect" >
                 <svg className="review-form__star-image" id="icon-star" width="27" height="27" viewBox="0 0 27 27" fill="#BDBEC2" xmlns="http://www.w3.org/2000/svg">
